@@ -20,6 +20,11 @@ public class JetSki : IVehicle
     public double MaxLandSpeed { get; set; }
     public double MaxAirSpeed { get; set; }
 
+    public JetSki(int EnginVolume, double MaxWaterSpeed)
+    {
+       var engineVolume = EnginVolume;
+        var maxWaterSpeed = MaxWaterSpeed;
+    }
     public void Drive()
     {
         Console.WriteLine("The jetski zips through the waves with the greatest of ease");
@@ -187,9 +192,9 @@ public class Program
 
 
         // Build a collection of all vehicles that operate on water
-        List<object> waterVehicles = new List<object>();
+        List<string> waterVehicles = new List<string>();
 
-        JetSki jetSki = new JetSki();
+        var jetSki = new JetSki(1, 160.9);
         BowRider bowRider = new BowRider();
 
         waterVehicles.Add(jetSki);
@@ -197,7 +202,7 @@ public class Program
         // With a single `foreach`, have each water vehicle Drive()
         foreach (var waterVehicle in waterVehicles)
         {
-            Console.WriteLine(waterVehicle);
+            waterVehicle.Drive();
         }
         Console.ReadLine();
     }
